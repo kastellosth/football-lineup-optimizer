@@ -28,7 +28,7 @@ Instead of selecting the highest-rated players greedily, the optimizer models li
 ## Architecture
 
 ```text
-CSV / User Data
+CSV / Sample Data / User Data
       |
       v
  Parsing + Validation
@@ -104,9 +104,13 @@ docker run --rm -p 8080:80 ghcr.io/<github-username>/<repository-name>:latest
 ## Project structure
 
 ```text
+data/
+├── teams/              # Sample candidate squads
+└── opponents/          # Sample opponent lineups and formations
+docs/
+└── thesis-report-public.pdf
 src/
 ├── components/         # Reusable UI and football visualizations
-├── Data/               # Example teams and opponent datasets
 ├── lib/
 │   ├── engine/         # Optimization algorithms and tactical scoring
 │   ├── hooks/          # React hooks
@@ -115,6 +119,19 @@ src/
 │   └── utils/          # Domain and matrix utilities
 └── pages/              # Application pages
 ```
+
+
+## Sample datasets
+
+The repository includes reproducible sample inputs under [`data/`](data/): four candidate squads and seven opponent lineups covering several common formations. These make it possible to inspect the CSV schema and exercise the optimizer without creating a dataset from scratch.
+
+See [`data/README.md`](data/README.md) for the dataset structure and provenance note. Player statistics/ratings should be treated as demonstration inputs; this repository does not claim ownership of third-party football data.
+
+## Academic background
+
+This project was developed as a Computer Science diploma thesis at the University of Crete. The report covers the assignment problem, Hungarian algorithm, complexity analysis, cost-matrix construction, player-position compatibility, tactical formation modelling, opponent-aware optimization, architecture, testing, and future work.
+
+[Read the public thesis report](docs/thesis-report-public.pdf). The public copy omits the student ID from the title page.
 
 ## Algorithm overview
 

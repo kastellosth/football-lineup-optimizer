@@ -1,0 +1,25 @@
+Team,ShirtNumber,FirstName,LastName,Nationality,Height_cm,Weight_kg,PrimaryPosition,AltPositions,BestFoot,Overall,Pace,Acceleration,SprintSpeed,Shooting,Positioning,Finishing,ShotPower,LongShots,Volleys,Penalties,Passing,Vision,Crossing,FreeKickAccuracy,ShortPassing,LongPassing,Curve,Dribbling,Agility,Reactions,Balance,DribblingAttr,BallControl,Composure,Defending,Interceptions,HeadingAccuracy,DefensiveAwareness,StandingTackle,SlidingTackle,Physicality,Jumping,Stamina,Strength,Aggression,Goalkeeping,GK_Diving,GK_Handling,GK_Kicking,GK_Positioning,GK_Reflexes
+Borussia Dortmund,9,Serhou,Guirassy,Guinea,187,82,ST,ST,Right,87,73,74,71,87,90,90,91,82,87,83,74,79,65,67,83,72,76,83,76,86,77,83,86,88,49,33,88,42,44,36,84,90,84,85,76,10,11,8,12,12,8
+Borussia Dortmund,1,Gregor,Kobel,Switzerland,195,88,GK,GK,Right,86,45,38,52,17,10,10,48,10,10,12,28,59,13,12,39,33,13,46,37,84,29,24,34,66,14,14,13,15,15,15,52,71,30,81,24,84,87,83,64,86,87
+Borussia Dortmund,4,Nico,Schlotterbeck,Germany,191,86,CB,CB,Left,85,75,77,72,59,58,51,81,67,56,38,71,72,70,55,78,86,67,73,68,84,64,74,71,78,85,83,84,85,87,87,84,91,74,85,84,11,8,10,8,14,13
+Borussia Dortmund,10,Julian,Brandt,Germany,185,83,CAM,CM,Right,83,73,67,79,76,82,77,82,78,81,55,82,86,78,78,85,83,82,84,83,82,82,84,85,85,45,56,54,49,29,39,68,69,85,72,44,11,11,16,11,8,9
+Borussia Dortmund,23,Emre,Can,Germany,186,86,CDM,CB,Right,82,77,67,86,78,72,74,85,80,73,81,72,74,64,64,81,74,77,76,69,79,74,75,78,83,82,80,82,79,85,85,86,88,80,86,91,11,14,8,8,13,11
+Borussia Dortmund,8,Felix,Nmecha,Germany,194,80,CDM,CM,Right,82,82,77,86,71,76,73,81,73,66,55,70,77,59,49,80,80,72,80,77,80,76,83,82,79,81,79,83,78,83,80,86,94,78,90,82,10,6,10,12,13,8
+Borussia Dortmund,3,Waldemar,Anton,Germany,189,86,CB,RB,Right,81,68,61,75,47,52,42,58,45,38,48,56,67,43,39,80,72,37,69,62,81,58,63,70,80,80,79,78,85,81,78,83,84,79,85,83,12,11,12,12,13,13
+Borussia Dortmund,25,Niklas,Süle,Germany,195,99,CB,RB,Right,81,60,45,74,52,42,36,78,64,59,32,61,66,54,40,78,82,43,64,34,81,44,69,72,84,81,82,75,81,82,83,74,72,52,93,79,12,15,7,14,7,15
+Borussia Dortmund,20,Marcel,Sabitzer,Austria,178,76,CDM,CM,Right,80,74,76,72,81,78,76,87,83,83,80,79,79,77,78,82,80,77,80,77,83,78,78,82,83,75,80,62,79,75,77,76,71,78,75,79,13,11,13,14,15,13
+Borussia Dortmund,27,Karim,Adeyemi,Germany,180,77,LM,RM,Left,79,96,96,96,73,77,73,76,72,71,70,69,71,70,62,74,67,67,80,86,77,82,82,79,76,39,31,70,25,34,35,74,90,80,67,59,10,12,12,7,12,7
+Borussia Dortmund,5,Ramy,Bensebaini,Algeria,187,82,LB,CB,Left,79,73,72,73,69,66,72,70,65,57,85,68,63,73,62,76,68,67,74,67,75,67,78,82,74,79,74,82,73,80,87,81,88,77,78,82,11,6,13,14,7,14
+Borussia Dortmund,26,Julian,Ryerson,Norway,183,82,RB,LB,Right,79,75,77,72,60,63,62,73,61,55,44,67,63,79,54,76,69,63,76,76,77,77,76,76,74,75,74,64,83,75,80,81,74,83,80,86,8,7,13,8,7,7
+Borussia Dortmund,14,Maximilian,Beier,Germany,185,72,ST,RM,Right,79,86,86,86,77,82,82,80,76,75,65,66,68,67,51,74,60,74,79,82,79,77,80,82,73,44,43,72,45,39,21,67,77,82,53,54,8,6,8,8,6,13
+Borussia Dortmund,21,Fabio,Soares Silva,Portugal,185,75,ST,LW,Right,79,81,79,83,77,81,80,79,69,75,75,60,69,45,46,75,70,52,77,79,78,69,79,81,76,37,18,80,32,28,26,82,89,83,77,77,9,6,12,7,13,8
+Borussia Dortmund,24,Daniel,Svensson,Sweden,178,72,LB,CM,Left,77,77,78,76,57,71,51,62,63,50,44,72,75,72,57,78,76,71,77,79,75,80,74,77,76,71,69,57,76,75,78,75,73,89,68,69,11,15,12,12,9,9
+Borussia Dortmund,2,Yan,Couto,Brazil,168,60,RB,RM,Right,77,79,85,72,60,75,61,65,58,45,55,72,75,81,43,82,74,77,81,85,75,90,83,86,65,67,73,49,71,69,74,63,57,77,51,66,9,9,6,13,8,11
+Borussia Dortmund,17,Carney,Chukwuemeka,England,187,77,CAM,CM,Right,76,74,74,74,65,72,67,68,63,59,58,70,77,70,52,79,73,67,78,78,77,77,80,78,75,58,58,65,49,62,58,67,75,64,70,57,11,12,12,9,11,10
+Borussia Dortmund,6,Salih,Özcan,Turkey,182,79,CDM,CM,Right,75,71,75,66,58,64,59,65,53,51,57,64,66,62,53,74,71,59,74,76,72,83,72,71,70,74,78,71,74,76,73,80,84,75,78,83,10,13,7,9,9,11
+Borussia Dortmund,35,Alexander,Meyer,Germany,195,88,GK,GK,Right,75,42,39,45,17,7,8,59,9,6,12,22,36,13,10,31,29,12,33,22,74,29,17,19,37,12,8,11,20,10,9,47,68,19,79,22,74,72,71,79,74,76
+Borussia Dortmund,16,Julien,Duranville,Belgium,170,67,RM,LM,Right,72,88,90,86,59,64,61,64,63,51,48,61,59,64,55,67,59,63,79,91,69,90,87,74,63,27,23,33,21,28,30,50,56,55,47,43,10,10,6,9,15,11
+Borussia Dortmund,30,Patrick,Drewes,Germany,194,90,GK,GK,Right,71,30,30,29,22,13,14,50,12,15,26,23,39,15,14,25,28,18,37,31,68,48,12,18,47,17,21,15,16,15,16,55,65,41,77,35,72,73,70,67,71,70
+Borussia Dortmund,37,Cole,Campbell,United States,170,68,RM,RW,Left,67,89,87,90,56,58,62,58,47,56,56,56,56,63,44,63,53,54,71,85,62,80,72,68,61,28,27,40,25,21,29,44,50,57,36,34,10,6,12,6,14,14
+Borussia Dortmund,33,Silas,Ostrzinski,Germany,198,93,GK,GK,Right,63,30,26,34,14,7,6,44,6,8,15,19,31,9,10,26,25,12,26,24,54,25,10,11,34,11,11,11,9,9,13,44,56,29,68,22,61,65,60,59,62,65
+Borussia Dortmund,28,Aaron,Anselmino,Argentina,186,83,CB,CB,Right,70,67,67,67,43,35,40,55,50,35,40,59,60,55,50,68,66,55,64,63,65,63,61,66,67,70,72,66,69,71,70,72,75,62,75,76,8,10,7,9,5,11
