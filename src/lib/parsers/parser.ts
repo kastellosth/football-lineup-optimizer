@@ -1,4 +1,4 @@
-import Papa from "papaparse";
+import * as Papa from "papaparse";
 import { Player } from "@/lib/types";
 
 // Normalizes a value to 0-100 range, handling both 0-1 and 0-100 scales
@@ -46,12 +46,12 @@ export function parseCSVToPlayers(csvText: string): Player[] {
       position: val("primaryposition"),
       slot: val("slot") || undefined,
       bestFoot: (val("bestfoot") as "Left" | "Right" | undefined) || undefined,
-      height: Number(val("heightcm")) || undefined,
-      weight: Number(val("weightkg")) || undefined,
+      height: Number(val("heightcm")) || 0,
+      weight: Number(val("weightkg")) || 0,
       overall: Number(val("overall")) || 0,
       team: val("team") || undefined, 
       attributes: {},
-      formation: formationValue || undefined,
+      formation: formationValue,
     };
 
     const attributeKeys = [

@@ -14,6 +14,13 @@ import {
   OptimizerConfig,
   DEFAULT_CONFIG,
 } from "@/lib/engine";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
 

@@ -478,8 +478,7 @@ export function calculateSynergyWeight(
 }
 
 // Determines the role category from a position slot 
-function determineRoleFromSlot(slot): string {
-  const s = slot.toUpperCase();
+function determineRoleFromSlot(slot: string): string {  const s = slot.toUpperCase();
   if (s.includes('ST') || s.includes('CF')) return 'striker';
   if (s.includes('W') && !s.includes('B')) return 'winger';
   if (s.includes('CAM')) return 'attacking-mid';

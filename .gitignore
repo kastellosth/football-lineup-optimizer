@@ -8,3 +8,6 @@ dist/
 coverage/
 .vscode/
 .idea/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
