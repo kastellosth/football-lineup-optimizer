@@ -6,6 +6,7 @@ import { OptimizerControls } from "@/components/OptimizerControls";
 import { useCSVImport } from "@/lib/hooks";
 import { parseCSVToPlayers } from "@/lib/parsers/parser";
 import { STORAGE_KEYS } from "@/lib/storage/keys";
+import { DEMO_TEAMS, DEMO_OPPONENTS } from "@/lib/demo/demoData";
 import {
   formationProfiles,
   normalizeFormation,
@@ -21,6 +22,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Play } from "lucide-react";
 
 const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -48,6 +50,9 @@ export function Optimizer() {
   const [viewingFormation, setViewingFormation] = useState<any | null>(null);
   const [viewOpen, setViewOpen] = useState(false);
   const [config, setConfig] = useState<OptimizerConfig>(DEFAULT_CONFIG);
+  const [demoTeam, setDemoTeam] = useState("liverpool");
+  const [demoOpponent, setDemoOpponent] = useState("roma-433");
+  const [isLoadingDemo, setIsLoadingDemo] = useState(false);
 
   const detectFormation = (players: any[]): string | null => {
     if (players.length === 0) return null;
@@ -144,10 +149,74 @@ export function Optimizer() {
       ]);
     }
   };
+  const loadDemoMatch = async () => {
+    try {
+      setIsLoadingDemo(true);
+      setError(null);
+
+      const selectedTeam = DEMO_TEAMS.find((team) => team.id === demoTeam);
+      const selectedOpponent = DEMO_OPPONENTS.find(
+        (opponent) => opponent.id === demoOpponent
+      );
+
+      if (!selectedTeam || !selectedOpponent) {
+        throw new Error("Demo dataset not found.");
+      }
+
+      const [teamResponse, opponentResponse] = await Promise.all([
+        fetch(selectedTeam.path),
+        fetch(selectedOpponent.path),
+      ]);
+
+      if (!teamResponse.ok || !opponentResponse.ok) {
+        throw new Error("Could not load demo CSV files.");
+      }
+
+      const [teamCsv, opponentCsv] = await Promise.all([
+        teamResponse.text(),
+        opponentResponse.text(),
+      ]);
+
+      const teamPlayers = parseCSVToPlayers(teamCsv);
+      const opponentPlayers = parseCSVToPlayers(opponentCsv);
+
+      if (teamPlayers.length < 11) {
+        throw new Error("Demo team does not contain enough players.");
+      }
+
+      if (opponentPlayers.length === 0) {
+        throw new Error("Demo opponent contains no players.");
+      }
+
+      myTeam.setData(teamPlayers);
+      oppTeam.setData(opponentPlayers);
+
+      const formation = detectFormation(opponentPlayers);
+      setDetectedFormation(formation);
+
+      setResults([]);
+      setBestFormation(null);
+
+      setParserLogs([
+        `Demo loaded: ${selectedTeam.label} vs ${selectedOpponent.label}`,
+        `Loaded ${teamPlayers.length} players for My Team.`,
+        `Loaded ${opponentPlayers.length} players for Opponent.`,
+        `Opponent formation: ${formation}`,
+        `Ready to optimize.`,
+      ]);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Failed to load demo data.";
+
+      setError(message);
+    } finally {
+      setIsLoadingDemo(false);
+    }
+  };
 
   const runOptimizer = async () => {
     if (!myTeam.data.length || !oppTeam.data.length) {
-      setError("Please upload both teams first!");
+      setError("Please load demo data or provide both teams first.");
       return;
     }
 
@@ -198,8 +267,8 @@ export function Optimizer() {
             setParserLogs((prev) => [
               ...prev,
               `${id}: Score ${res.totalScore.toFixed(2)} ` +
-              `(Counter: ${res.counterAdvantage > 0 ? '+' : ''}${res.counterAdvantage?.toFixed(1) || '0.0'}, ` 
-              
+              `(Counter: ${res.counterAdvantage > 0 ? '+' : ''}${res.counterAdvantage?.toFixed(1) || '0.0'}, `
+
             ]);
           } else {
             console.warn(`Formation ${id} returned null - skipping`);
@@ -281,6 +350,62 @@ export function Optimizer() {
           <CardTitle>Formation Optimizer</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="rounded-lg border bg-muted/30 p-4 space-y-4">
+            <div>
+              <h3 className="font-semibold">Quick Demo</h3>
+              <p className="text-sm text-muted-foreground">
+                Load bundled team data and try the optimizer without uploading CSV files.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">My Team</label>
+
+                <select
+                  value={demoTeam}
+                  onChange={(e) => setDemoTeam(e.target.value)}
+                  className="w-full h-10 rounded-md border border-input bg-background px-3 text-sm"
+                >
+                  {DEMO_TEAMS.map((team) => (
+                    <option key={team.id} value={team.id}>
+                      {team.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Opponent</label>
+
+                <select
+                  value={demoOpponent}
+                  onChange={(e) => setDemoOpponent(e.target.value)}
+                  className="w-full h-10 rounded-md border border-input bg-background px-3 text-sm"
+                >
+                  {DEMO_OPPONENTS.map((opponent) => (
+                    <option key={opponent.id} value={opponent.id}>
+                      {opponent.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <Button
+              onClick={loadDemoMatch}
+              disabled={isLoadingDemo || isLoading}
+              variant="secondary"
+            >
+              <Play className="mr-2 h-4 w-4" />
+              {isLoadingDemo ? "Loading Demo..." : "Load Demo Match"}
+            </Button>
+
+            <p className="text-xs text-muted-foreground">
+              Demo datasets are bundled with the project. You can also upload your own
+              CSV files below.
+            </p>
+          </div>
           {/* Upload Controls */}
           <div className="flex gap-3 items-center flex-wrap">
             <Button onClick={() => myRef.current?.click()} variant="default">
@@ -365,7 +490,7 @@ export function Optimizer() {
                 </div>
               ))
             ) : (
-              <div className="text-muted-foreground">No logs yet. Upload teams to begin.</div>
+              <div className="text-muted-foreground">No data loaded yet. Try the Quick Demo or upload your own teams.</div>
             )}
           </div>
 
